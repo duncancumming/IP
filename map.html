@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no"/>
+    <title>World Map</title>
+    <style type="text/css">
+        html {
+            height: 100%;
+        }
+
+        body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #map-canvas {
+            height: 100%;
+        }
+    </style>
+    <script type="text/javascript"
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBTtOKGvOo4YhOExPhLqeBFZCH_jO_JCL4&sensor=false"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="map.js"></script>
+</head>
+<body>
+<button onclick=" parseGeoJSON(testC, true) ">Some countries</button>
+<button onclick=" addAuthMarker(testAuth) ">Add Twittes</button>
+<div id="map-canvas"></div>
+<script type="text/javascript">
+
+
+    var testC = {};
+
+    testC['Canada'] = 12;
+    testC['Senegal'] = 321;
+    testC['Swaziland'] = 1322;
+    testC['Sweden'] = 51;
+    testC['Austria'] = 22;
+
+    var testAuth = [];
+    testAuth[0] = { lat: 25, lng: 33, twitte: 'Gigel' };
+    testAuth[1] = { lat: 31, lng: 2, twitte: 'Dorel' };
+    testAuth[2] = { lat: 12, lng: 22, twitte: 'Masa' };
+    testAuth[3] = { lat: 43, lng: 13, twitte: 'Tasu' };
+
+
+    function mockData() {
+        var countries = {};
+        countries['romania'] = {
+            lat: 46,
+            lng: 25,
+            radius: 300000,
+            tweets: 12
+        };
+        countries['spania'] = {
+            lat: 40,
+            lng: -3,
+            radius: 300000,
+            tweets: 241
+        };
+        countries['usa'] = {
+            lat: 37,
+            lng: -95,
+            radius: 300000,
+            tweets: 322
+        };
+        countries['brazilia'] = {
+            lat: -14,
+            lng: -51,
+            radius: 300000,
+            tweets: 891
+        };
+
+      
+        for (var country in countries) {
+            addCircle(countries[country].lat, countries[country].lng, countries[country].radius, countries[country].tweets);
+            }
+        
+        addCircle(37, -77, 300000, 11);
+
+    }
+
+
+</script>
+
+</body>
+</html>
